@@ -25,7 +25,7 @@ app.post('/api/chat', async (req, res) => {
       return res.status(400).json({ error: 'No messages provided' });
     }
 
-    const model = genAI.getGenerativeModel({ model: 'gemma-3-27b-it' });
+    const model = genAI.getGenerativeModel({ model: 'gemma-4-31b-it' });
 
     // Build history (all but last message)
     const history = messages.slice(0, -1).map(msg => ({
