@@ -1,10 +1,10 @@
-# Gemma Vision Assistant
+# Gemma Vision Assistant — AI Resume Analyser
 
-A beautiful, fully functional multimodal AI chat assistant powered by **Gemma 4** (gemma-3-27b-it) via the Google Gemini API.
+A beautiful, fully functional multimodal AI chat assistant powered by **Gemma 4** (`gemma-4-31b-it`) via the Google Gemini API. Chat with text, upload images, and get streaming AI responses.
 
 ## What It Does
 
-Chat with an AI that understands both text and images. Upload a photo and ask questions about it, or just have a conversation — Gemma handles both.
+Chat with an AI that understands both text and images. Upload a photo, resume, chart or any image and ask questions about it — or just have a conversation. Gemma 4 handles both.
 
 ## Get a Gemini API Key
 
@@ -12,11 +12,13 @@ Visit: https://aistudio.google.com/app/apikey
 
 ## Setup
 
-1. `npm install`
-2. `cp .env.example .env` (Windows: `copy .env.example .env`)
-3. Open `.env` and replace `your_gemini_api_key_here` with your actual API key
-4. `npm start`
-5. Open http://localhost:3000
+```bash
+npm install
+copy .env.example .env        # Windows
+# open .env and add your API key
+npm start
+# Open http://localhost:3000
+```
 
 ## Features
 
@@ -31,7 +33,6 @@ Visit: https://aistudio.google.com/app/apikey
 ## Project Structure
 
 ```
-gemma-vision-assistant/
 ├── server.js          # Express backend with SSE streaming
 ├── package.json
 ├── .env.example       # Copy to .env and add your API key
@@ -44,14 +45,14 @@ gemma-vision-assistant/
 
 ## How Gemma 4 Multimodal Works
 
-Gemma 4 (accessed as `gemma-3-27b-it` through the Gemini API) processes both text and image inputs in the same request. Images are base64-encoded and sent as inline data alongside the text prompt. The server uses Server-Sent Events (SSE) to stream the response token-by-token, so you see output as it's generated.
+Gemma 4 (accessed as `gemma-4-31b-it` through the Gemini API) processes both text and image inputs in the same request. Images are base64-encoded and sent as inline data alongside the text prompt. The server uses Server-Sent Events (SSE) to stream the response token-by-token.
 
 ## Environment Variables
 
-| Variable         | Description                        | Default |
-|------------------|------------------------------------|---------|
-| `GEMINI_API_KEY` | Your Google Gemini API key         | —       |
-| `PORT`           | Port the server listens on         | `3000`  |
+| Variable         | Description                | Default |
+|------------------|----------------------------|---------|
+| `GEMINI_API_KEY` | Your Google Gemini API key | —       |
+| `PORT`           | Port the server listens on | `3000`  |
 
 ---
 
