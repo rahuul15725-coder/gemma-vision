@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gemma Vision Assistant — multimodal AI chat powered by Gemma 4 via the Google Gemini API. Chat with text and images." />
+  <title>Gemma Vision Assistant</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">💎</span>
+          <span class="logo-text">Gemma 4</span>
+        </div>
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">✕</button>
+      </div>
+
+      <div class="model-card">
+        <div class="model-card-header">
+          <span class="model-name">gemma-3-27b-it</span>
+          <span class="model-badge">Open Weights</span>
+        </div>
+        <p class="model-desc">Google's open-weights multimodal model with vision capabilities, accessed via the Gemini API.</p>
+        <div class="model-stats">
+          <div class="stat">
+            <span class="stat-value">27B</span>
+            <span class="stat-label">Parameters</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">MM</span>
+            <span class="stat-label">Multimodal</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">128K</span>
+            <span class="stat-label">Context</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-section">
+        <h3>Features</h3>
+        <ul class="features-list">
+          <li><span class="feat-icon">🖼️</span> Image Understanding</li>
+          <li><span class="feat-icon">💬</span> Multi-turn Chat</li>
+          <li><span class="feat-icon">🔤</span> Text Generation</li>
+          <li><span class="feat-icon">🌐</span> Open Weights</li>
+          <li><span class="feat-icon">⚡</span> Fast Streaming</li>
+        </ul>
+      </div>
+
+      <div class="tips-section">
+        <h3>Tips</h3>
+        <ul class="tips-list">
+          <li>📌 Upload an image and ask detailed questions about it.</li>
+          <li>📌 Be specific — clear prompts get better answers.</li>
+          <li>📌 Ask follow-ups to dig deeper into a topic.</li>
+          <li>📌 Use it for code review, creative writing, or analysis.</li>
+          <li>📌 Combine images + text for richer context.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main content -->
+    <main class="main">
+      <header class="header">
+        <button class="menu-btn" id="menuBtn" aria-label="Open sidebar">☰</button>
+        <div class="header-title">
+          <span class="header-logo">✨</span>
+          <h1>Gemma Vision Assistant</h1>
+        </div>
+        <span class="header-badge">gemma-3-27b-it</span>
+        <button class="clear-btn" id="clearBtn" aria-label="Clear chat">🗑️ Clear</button>
+      </header>
+
+      <div class="chat-container" id="chatContainer">
+        <!-- Welcome screen -->
+        <div class="welcome" id="welcome">
+          <div class="welcome-inner">
+            <div class="welcome-icon">💎</div>
+            <h2 class="welcome-title">Welcome to Gemma Vision Assistant</h2>
+            <p class="welcome-subtitle">Powered by Gemma 4 — an open-weights multimodal model. Chat with text, upload images, and explore what AI can understand.</p>
+            <div class="feature-cards">
+              <div class="feature-card">
+                <span class="fc-icon">🖼️</span>
+                <h4>Vision &amp; Images</h4>
+                <p>Upload photos and ask Gemma to describe, analyze, or answer questions about them.</p>
+              </div>
+              <div class="feature-card">
+                <span class="fc-icon">💬</span>
+                <h4>Smart Conversations</h4>
+                <p>Maintain multi-turn context so Gemma remembers what you discussed earlier.</p>
+              </div>
+              <div class="feature-card">
+                <span class="fc-icon">🌐</span>
+                <h4>Open Intelligence</h4>
+                <p>Built on open-weights Gemma 4, giving you transparency and control over the model you use.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="messages" id="messages"></div>
+
+        <!-- Typing indicator -->
+        <div class="typing-indicator" id="typingIndicator" style="display:none" aria-live="polite" aria-label="Gemma is thinking">
+          <div class="typing-bubble">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <span class="typing-text">Gemma is thinking...</span>
+        </div>
+      </div>
+
+      <!-- Input area -->
+      <div class="input-area">
+        <div class="image-preview-strip" id="imagePreviewStrip"></div>
+        <div class="input-row">
+          <button class="attach-btn" id="attachBtn" title="Attach image" aria-label="Attach image">📎</button>
+          <input type="file" id="fileInput" accept="image/*" style="display:none" multiple aria-label="File input" />
+          <textarea
+            id="messageInput"
+            placeholder="Ask Gemma anything... you can also attach an image!"
+            rows="1"
+            aria-label="Message input"
+            autocomplete="off"
+            spellcheck="true"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" title="Send message" aria-label="Send message">➤</button>
+        </div>
+        <div class="input-hint">Press Enter to send · Shift+Enter for new line · 📎 to attach images</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
